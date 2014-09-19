@@ -13,9 +13,52 @@
         <link rel="stylesheet" href="css/font-awesome.min.css">
         <link rel="stylesheet" href="css/templatemo_misc.css">
         <link rel="stylesheet" href="css/templatemo_style.css">
+
+        <!-- JavaScripts -->
+        <script src="js/jquery-1.10.2.min.js"></script>
+        <script src="js/jquery.singlePageNav.js"></script>
+        <script src="js/jquery.flexslider.js"></script>
+        <script src="js/jquery.prettyPhoto.js"></script>
+        <script src="js/custom.js"></script>
+        <script>
+            $(document).ready(function() {
+                $("a[data-gal^='prettyPhoto']").prettyPhoto({hook: 'data-gal'});
+                $("[name=tamanho]").click(function() {
+                    $("#tamanhos").fadeOut("fast");
+                    $("#sabores").fadeIn("fast");
+                });
+                $("[name=next]").click(function() {
+                    $("#sabores").fadeOut("fast");
+                    $("#pessoal").fadeIn("fast");
+                });
+                $("[name=fim]").click(function() {
+                    $("#pessoal").fadeOut("fast");
+                    $("#sucesso").fadeIn("fast");
+                });
+            });
+
+            function initialize() {
+                var mapOptions = {
+                    zoom: 11,
+                    center: new google.maps.LatLng(16.8451789, 96.1439764)
+                };
+
+                var map = new google.maps.Map(document.getElementById('map-canvas'),
+                        mapOptions);
+            }
+
+            function loadScript() {
+                var script = document.createElement('script');
+                script.type = 'text/javascript';
+                script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&' +
+                        'callback=initialize';
+                document.body.appendChild(script);
+            }
+
+            window.onload = loadScript;
+        </script>
     </head>
     <body>
-
         <!-- This one in here is responsive menu for tablet and mobiles -->
         <div class="responsive-navigation visible-sm visible-xs">
             <a href="#" class="menu-toggle-btn">
@@ -23,40 +66,38 @@
             </a>
             <div class="navigation responsive-menu">
                 <ul>
-                    <li class="home"><a href="#templatemo">Home</a></li>
+                    <li class="home"><a href="#home">Home</a></li>
+                    <li class="cardapio"><a href="#cardapio">Cardápio</a></li>
+                    <li class="pedidos"><a href="#pedidos">Faça seu pedido</a></li>
                     <li class="about"><a href="#about">Nosso Trabalho</a></li>
-                    <li class="portfolio"><a href="#portfolio">Cardápio</a></li>
-                    <li class="services"><a href="#services">Pedidos</a></li>
                     <li class="contact"><a href="#contact">Contato</a></li>
                 </ul> <!-- /.main_menu -->
             </div> <!-- /.responsive_menu -->
         </div> <!-- /responsive_navigation -->
-
         <div id="main-sidebar" class="hidden-xs hidden-sm">
             <div class="logo">
                 <a href="#"><h1>Pizzarella</h1></a>
                 <span>A Pizza mais bella da região</span>
             </div> <!-- /.logo -->
-
             <div class="navigation">
                 <ul class="main-menu">
-                    <li class="home"><a href="#templatemo">Home</a></li>
+                    <li class="home"><a href="#home">Home</a></li>
+                    <li class="cardapio"><a href="#cardapio">Cardápio</a></li>
+                    <li class="pedidos"><a href="#pedidos">Faça seu pedido</a></li>
                     <li class="about"><a href="#about">Nosso Trabalho</a></li>
-                    <li class="portfolio"><a href="#portfolio">Cardápio</a></li>
-                    <li class="services"><a href="#services">Pedidos</a></li>
                     <li class="contact"><a href="#contact">Contato</a></li>
                 </ul>
             </div> <!-- /.navigation -->
-
         </div> <!-- /#main-sidebar -->
-
         <div id="main-content">
 
-            <div id="templatemo">
+            <div id="carregando">
+                <div class="loading"></div>
+            </div>
+            <div id="home">
                 <div class="main-slider">
                     <div class="flexslider">
                         <ul class="slides">
-
                             <li>
                                 <div class="slider-caption">
                                     <h2>Responsive Layout</h2>
@@ -98,10 +139,225 @@
                     </div>
                 </div>
             </div> <!-- /#sTop -->
+            <!--CARDÁPIO-->
+            <div id="cardapio" class="section-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-title">
+                            <h2>Cardápio</h2>
+                        </div> <!-- /.section-title -->
+                    </div> <!-- /.col-md-12 -->
+                </div> <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="portfolio-item">
+                            <div class="portfolio-thumb">
+                                <img src="images/Cardapio/pizza1.jpg" alt="Calabresa">
+                                <div class="overlay-p">
+                                    <a href="images/Cardapio/pizza1.jpg" data-gal="prettyPhoto">
+                                        <i class="fa fa-arrows-alt fa-2x"></i>
+                                    </a>
+                                </div>
+                            </div> <!-- /.portfolio-thumb -->
+                            <h3 class="portfolio-title"><a href="#">Calabresa</a></h3>
+                        </div> <!-- /.portfolio-item -->
+                    </div> <!-- /.col-md-4 -->
+                    <div class="col-md-4">
+                        <div class="portfolio-item">
+                            <div class="portfolio-thumb">
+                                <img src="images/Cardapio/pizza2.jpg" alt="Quatro Queijos">
+                                <div class="overlay-p">
+                                    <a href="images/Cardapio/pizza2.jpg" data-gal="prettyPhoto">
+                                        <i class="fa fa-arrows-alt fa-2x"></i>
+                                    </a>
+                                </div>
+                            </div> <!-- /.portfolio-thumb -->
+                            <h3 class="portfolio-title"><a href="#">Quatro Queijos</a></h3>
+                        </div> <!-- /.portfolio-item -->
+                    </div> <!-- /.col-md-4 -->
+                    <div class="col-md-4">
+                        <div class="portfolio-item">
+                            <div class="portfolio-thumb">
+                                <img src="images/Cardapio/pizza3.jpg" alt="Baicon com Catupiry">
+                                <div class="overlay-p">
+                                    <a href="images/Cardapio/pizza3.jpg" data-gal="prettyPhoto">
+                                        <i class="fa fa-arrows-alt fa-2x"></i>
+                                    </a>
+                                </div>
+                            </div> <!-- /.portfolio-thumb -->
+                            <h3 class="portfolio-title"><a href="#">Bacon com Catupiry</a></h3>
+                        </div> <!-- /.portfolio-item -->
+                    </div> <!-- /.col-md-4 -->
+                </div> <!-- /.row -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="portfolio-item">
+                            <div class="portfolio-thumb">
+                                <img src="images/Cardapio/pizza4.jpg" alt="Pepperoni">
+                                <div class="overlay-p">
+                                    <a href="images/Cardapio/pizza4.jpg" data-gal="prettyPhoto">
+                                        <i class="fa fa-arrows-alt fa-2x"></i>
+                                    </a>
+                                </div>
+                            </div> <!-- /.portfolio-thumb -->
+                            <h3 class="portfolio-title"><a href="#">Pepperoni</a></h3>
+                        </div> <!-- /.portfolio-item -->
+                    </div> <!-- /.col-md-4 -->
+                    <div class="col-md-4">
+                        <div class="portfolio-item">
+                            <div class="portfolio-thumb">
+                                <img src="images/Cardapio/doce1.jpg" alt="Chocolate com Morango">
+                                <div class="overlay-p">
+                                    <a href="images/Cardapio/doce1.jpg" data-gal="prettyPhoto">
+                                        <i class="fa fa-arrows-alt fa-2x"></i>
+                                    </a>
+                                </div>
+                            </div> <!-- /.portfolio-thumb -->
+                            <h3 class="portfolio-title"><a href="#">Chocolate com Morango</a></h3>
+                        </div> <!-- /.portfolio-item -->
+                    </div> <!-- /.col-md-4 -->
+                    <div class="col-md-4">
+                        <div class="portfolio-item">
+                            <div class="portfolio-thumb">
+                                <img src="images/Cardapio/doce2.jpg" alt="Chocolate">
+                                <div class="overlay-p">
+                                    <a href="images/Cardapio/doce2.jpg" data-gal="prettyPhoto">
+                                        <i class="fa fa-arrows-alt fa-2x"></i>
+                                    </a>
+                                </div>
+                            </div> <!-- /.portfolio-thumb -->
+                            <h3 class="portfolio-title"><a href="#">Chocolate</a></h3>
+                        </div> <!-- /.portfolio-item -->
+                    </div> <!-- /.col-md-4 -->
+                </div> <!-- /.row -->
+            </div> <!-- /#portfolio -->              
 
-            <!--NOSSO TRABALHO-->
-            <div class="container-fluid">              
+            <!--PEDIDOS-->
+            <div id="pedidos" class="section-content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="section-title">
+                            <h2>Pedidos</h2>
+                        </div> <!-- /.section-title -->
+                    </div> <!-- /.col-md-12 -->
+                </div> <!-- /.row -->
+                <form method="post">
+                    <input type="hidden" name="total" value="0" />
+                    <div id="tamanhos">
+                        <div class="row our-skills">
+                            <div class="col-md-12">
+                                <h3>Escolha o tamanho da sua pizza</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="service-item">
+                                    <div class="service-content">
+                                        <button type="button" name="tamanho" value="pequena"><h3>Pequena - R$ 20,00</h3></button>
+                                    </div>
+                                </div> <!-- /.service-item -->
+                            </div> <!-- /.col-md-4 -->
+                            <div class="col-md-4">
+                                <div class="service-item">
+                                    <div class="service-content">
+                                        <button type="button" name="tamanho" value="media"><h3>Média - R$ 40,00</h3></button>
+                                    </div>
+                                </div> <!-- /.service-item -->
+                            </div> <!-- /.col-md-4 -->
+                            <div class="col-md-4">
+                                <div class="service-item">
+                                    <div class="service-content">
+                                        <button type="button" name="tamanho" value="grande"><h3>Grande - R$ 60,00</h3></button>
+                                    </div>
+                                </div> <!-- /.service-item -->
+                            </div> <!-- /.col-md-4 -->
+                        </div>
+                    </div><!-- fim tamanhos -->
+                    <div id="sabores">
+                        <div class="row our-skills">
+                            <div class="col-md-12">
+                                <h3>Escolha os sabores e a quantidade</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Calabresa </label>
+                                <input type="number" min="0" value="0" name="qtdCalabresa" />
+                            </div> <!-- /.col-md-3 -->
+                            <div class="col-md-3">
+                                <label>Quatro queijos </label>
+                                <input type="number" min="0" value="0" name="qtd4queijos" />
+                            </div> <!-- /.col-md-3 -->
+                            <div class="col-md-3">
+                                <label>Bacon com catupiry </label>
+                                <input type="number" min="0" value="0" name="qtdCatupiry" />
+                            </div> <!-- /.col-md-3 -->
+                        </div> <!-- fim row -->
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label>Pepperoni </label>
+                                <input type="number" min="0" value="0" name="qtdPepperoni" />
+                            </div> <!-- /.col-md-3 -->
+                            <div class="col-md-4">
+                                <label>Chocolate com morango </label>
+                                <input type="number" min="0" value="0" name="qtdMorango" />
+                            </div> <!-- /.col-md-4 -->
+                            <div class="col-md-3">
+                                <label>Chocolate </label>
+                                <input type="number" min="0" value="0" name="qtdChocolate" />
+                            </div> <!-- /.col-md-4 -->
+                        </div> <!-- fim row -->
+                        <div class="cleaner h10"></div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <button type="button" name="next" class="btn btn-lg btn-info">Próximo</button>
+                            </div> <!-- /.col-md-2 -->
+                        </div> <!-- fim row -->
+                    </div><!-- fim sabores -->
+                    <div id="pessoal">
+                        <div class="row our-skills">
+                            <div class="col-md-12">
+                                <h3>Preencha seus dados</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="text" name="nome" placeholder="Nome completo" required/>
+                                <div class="cleaner h10"></div>                           
+                                <input type="text" name="endereco" placeholder="Endereço" required />
+                                <div class="cleaner h10"></div>
+                                <input type="email" name="email" placeholder="Seu email" required />
+                                <input type="tel" name="telefone" placeholder="Telefone" required />
+                                <input name="total" value="0" />
+                            </div>
+                        </div>
+                        <div class="cleaner h10"></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h5>Confira o total do pedido antes de continuar!</h5>
+                            </div>
+                        </div> <!-- fim row -->
+                        <div class="row">
+                            <div class="col-md-2">
+                                <button type="button" name="fim" class="btn btn-lg btn-info">Concluir pedido</button>
+                            </div> <!-- /.col-md-2 -->
+                        </div> <!-- fim row -->
+                    </div><!-- fim pessoal -->
+                    
+                    <div id="sucesso">
+                        <div class="row our-skills">
+                            <div class="col-md-12">
+                                <a class="btn btn-lg btn-success">Seu pedido foi enviado!</a>
+                                <p>Em poucos minutos você o receberá em casa.</p>
+                            </div>
+                        </div>
+                    </div><!-- fim sucesso -->
+                </form>
                 
+            </div> <!-- /#pedidos -->
+            
+            <!--NOSSO TRABALHO-->
+            <div class="container-fluid">
                 <div id="about" class="section-content">
                     <div class="row">
                         <div class="col-md-12">
@@ -179,178 +435,6 @@
                         </div>
                     </div> <!-- /.row -->
                 </div> <!-- /#about -->
-                
-                
-                
-                <!--CARDÁPIO-->
-                <div id="portfolio" class="section-content">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="section-title">
-                                <h2>Cardápio</h2>
-                            </div> <!-- /.section-title -->
-                        </div> <!-- /.col-md-12 -->
-                    </div> <!-- /.row -->
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="portfolio-item">
-                                <div class="portfolio-thumb">
-                                    <img src="images/Cardapio/pizza1.jpg" alt="Calabresa">
-                                    <div class="overlay-p">
-                                        <a href="images/Cardapio/pizza1.jpg" data-gal="prettyPhoto">
-                                            <i class="fa fa-arrows-alt fa-2x"></i>
-                                        </a>
-                                    </div>
-                                </div> <!-- /.portfolio-thumb -->
-                                <h3 class="portfolio-title"><a href="#">Calabresa</a></h3>
-                            </div> <!-- /.portfolio-item -->
-                        </div> <!-- /.col-md-4 -->
-                        <div class="col-md-4">
-                            <div class="portfolio-item">
-                                <div class="portfolio-thumb">
-                                    <img src="images/Cardapio/pizza2.jpg" alt="Quatro Queijos">
-                                    <div class="overlay-p">
-                                        <a href="images/Cardapio/pizza2.jpg" data-gal="prettyPhoto">
-                                            <i class="fa fa-arrows-alt fa-2x"></i>
-                                        </a>
-                                    </div>
-                                </div> <!-- /.portfolio-thumb -->
-                                <h3 class="portfolio-title"><a href="#">Quatro Queijos</a></h3>
-                            </div> <!-- /.portfolio-item -->
-                        </div> <!-- /.col-md-4 -->
-                        <div class="col-md-4">
-                            <div class="portfolio-item">
-                                <div class="portfolio-thumb">
-                                    <img src="images/Cardapio/pizza3.jpg" alt="Baicon com Catupiry">
-                                    <div class="overlay-p">
-                                        <a href="images/Cardapio/pizza3.jpg" data-gal="prettyPhoto">
-                                            <i class="fa fa-arrows-alt fa-2x"></i>
-                                        </a>
-                                    </div>
-                                </div> <!-- /.portfolio-thumb -->
-                                <h3 class="portfolio-title"><a href="#">Baicon com Catupiry</a></h3>
-                            </div> <!-- /.portfolio-item -->
-                        </div> <!-- /.col-md-4 -->
-                    </div> <!-- /.row -->
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="portfolio-item">
-                                <div class="portfolio-thumb">
-                                    <img src="images/Cardapio/pizza4.jpg" alt="Pepperoni">
-                                    <div class="overlay-p">
-                                        <a href="images/Cardapio/pizza4.jpg" data-gal="prettyPhoto">
-                                            <i class="fa fa-arrows-alt fa-2x"></i>
-                                        </a>
-                                    </div>
-                                </div> <!-- /.portfolio-thumb -->
-                                <h3 class="portfolio-title"><a href="#">Pepperoni</a></h3>
-                            </div> <!-- /.portfolio-item -->
-                        </div> <!-- /.col-md-4 -->
-                        <div class="col-md-4">
-                            <div class="portfolio-item">
-                                <div class="portfolio-thumb">
-                                    <img src="images/Cardapio/doce1.jpg" alt="Chocolate com Morango">
-                                    <div class="overlay-p">
-                                        <a href="images/Cardapio/doce1.jpg" data-gal="prettyPhoto">
-                                            <i class="fa fa-arrows-alt fa-2x"></i>
-                                        </a>
-                                    </div>
-                                </div> <!-- /.portfolio-thumb -->
-                                <h3 class="portfolio-title"><a href="#">Chocolate com Morango</a></h3>
-                            </div> <!-- /.portfolio-item -->
-                        </div> <!-- /.col-md-4 -->
-                        <div class="col-md-4">
-                            <div class="portfolio-item">
-                                <div class="portfolio-thumb">
-                                    <img src="images/Cardapio/doce2.jpg" alt="Chocolate">
-                                    <div class="overlay-p">
-                                        <a href="images/Cardapio/doce2.jpg" data-gal="prettyPhoto">
-                                            <i class="fa fa-arrows-alt fa-2x"></i>
-                                        </a>
-                                    </div>
-                                </div> <!-- /.portfolio-thumb -->
-                                <h3 class="portfolio-title"><a href="#">Chocolate</a></h3>
-                            </div> <!-- /.portfolio-item -->
-                        </div> <!-- /.col-md-4 -->
-                    </div> <!-- /.row -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="load-more">
-                                <a href="#portfolio" class="largeButton portfolioBgColor">Load More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div> <!-- /#portfolio -->
-
-                
-                
-                <!--PEDIDOS-->
-                <div id="services" class="section-content">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="section-title">
-                                <h2>Pedidos</h2>
-                            </div> <!-- /.section-title -->
-                        </div> <!-- /.col-md-12 -->
-                    </div> <!-- /.row -->
-                    <div class="row our-skills">
-                        <div class="col-md-8">
-                            <h3>Escolha o tamanho da pizza desejada</h3>
-                            Integer hendrerit erat sed tellus pretium, eu sodales eros dignissim. Duis augue eros, mollis ac velit at, rutrum tincidunt ipsum. Morbi semper dui id fringilla semper. Etiam vulputate sagittis vestibulum. Vivamus ac ante cursus, feugiat ipsum et, aliquet justo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, minima soluta numquam perferendis illum alias omnis commodi error veritatis a esse nostrum asperiores recusandae.
-                        </div>
-                        <div class="col-md-4">
-                            <ul class="progess-bars">
-                                <li>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">Graphics 90%</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;">HTML5 CSS3 75%</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100" style="width: 66%;">WordPress 66%</div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" style="width: 88%;">Marketing 88%</div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="row">
-                        
-                        <div class="col-md-4">
-                            <div class="service-item clearfix">
-                                <div class="service-content">
-                                    <h3>Pequena - R$ 20,00</h3>
-                                </div>
-                            </div> <!-- /.service-item -->
-                        </div> <!-- /.col-md-4 -->
-                        <div class="col-md-4">
-                            <div class="service-item">
-                                <div class="service-content">
-                                    <h3>Média - R$ 40,00</h3>
-                                </div>
-                            </div> <!-- /.service-item -->
-                        </div> <!-- /.col-md-4 -->
-                        <div class="col-md-4">
-                            <div class="service-item">
-                                <div class="service-content">
-                                    <h3>Grande - R$ 60,00</h3>
-                                </div>
-                            </div> <!-- /.service-item -->
-                        </div> <!-- /.col-md-4 -->
-                    </div> <!-- /.row -->                    
-                </div> <!-- /#services -->
-
-                
-                
                 <!--CONTATO-->
                 <div id="contact" class="section-content">
                     <div class="row">
@@ -417,8 +501,9 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-6">
-                                <p class="copyright">Copyright &copy <script> var d = new Date(); document.write(d.getFullYear());</script> <a href="#"> Desenvolvido por Baghia e Renan | CC 2011/2
-                               </p>
+                                <p class="copyright">Copyright &copy <script> var d = new Date();
+                                    document.write(d.getFullYear());</script> <a href="#"> Desenvolvido por Baghia e Renan | CC 2011/2
+                                </p>
                             </div> <!-- /.col-md-6 -->
                             <div class="col-md-6 credits">
                                 <p><!-- Credit: www.templatemo.com --></p>
@@ -430,42 +515,5 @@
             </div> <!-- /.site-footer -->
 
         </div> <!-- /#main-content -->
-
-        <!-- JavaScripts -->
-        <script src="js/jquery-1.10.2.min.js"></script>
-        <script src="js/jquery.singlePageNav.js"></script>
-        <script src="js/jquery.flexslider.js"></script>
-        <script src="js/jquery.prettyPhoto.js"></script>
-        <script src="js/custom.js"></script>
-        <script>
-            $(document).ready(function() {
-                $("a[data-gal^='prettyPhoto']").prettyPhoto({hook: 'data-gal'});
-            });
-
-            function initialize() {
-                var mapOptions = {
-                    zoom: 11,
-                    center: new google.maps.LatLng(16.8451789, 96.1439764)
-                };
-
-                var map = new google.maps.Map(document.getElementById('map-canvas'),
-                        mapOptions);
-            }
-
-            function loadScript() {
-                var script = document.createElement('script');
-                script.type = 'text/javascript';
-                script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&' +
-                        'callback=initialize';
-                document.body.appendChild(script);
-            }
-
-            window.onload = loadScript;
-        </script>
-        <!-- templatemo 394 sonic -->
-        <!-- 
-        Sonic Template 
-        http://www.templatemo.com/preview/templatemo_394_sonic 
-        -->
     </body>
 </html>
