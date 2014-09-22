@@ -1,0 +1,11 @@
+User-agent: *
+Disallow: /css
+Disallow: /fonts
+Disallow: /img
+Disallow: /js
+Disallow: /.htaccess
+Disallow: /google1f98296107768071.html
+Disallow: /*.css$
+Disallow: /*.js$
+Allow: /*.html
+Sitemap: http://www.pizzarella.hol.es/sitemap.xml  
